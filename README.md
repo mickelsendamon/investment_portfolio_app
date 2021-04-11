@@ -1,0 +1,2 @@
+# investment_portfolio_app
+The Investment Portfolio app is for the casual investor looking to get an historical view of their investments. The app allows investors to record stock purchases and sells. The system will then pull the data automatically through an API call and record the purchase or sale. The platform offers daily updates after the trading day is done for investors to track and monitor their investment portfolio. Historical data allows investors to make decisions about the future of their portfolio. 
