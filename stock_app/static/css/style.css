@@ -1,0 +1,19 @@
+* {
+    margin: 10px;
+    /* outline: red 1px dotted; */
+}
+
+h1 {
+}
+
+a {
+    text-decoration: none;
+}
+
+li a {
+    text-decoration: none;
+}
+
+table th td {
+    border: 1px solid black;
+}

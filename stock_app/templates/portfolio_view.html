@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load mathfilters %}
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col">
+            <h1>My Portfolio</h1>
+            <h1>${{portfolio.value}} ( {{portfolio.growth}} % )</h1>
+        </div>
+        <div class="col">
+            <ul>
+                <li><a href="/portfolio">Home</a> | </li>
+                <li><a href="/my_account">Account</a> | </li>
+                <li><a href="/logout">Sign Out</a> | </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <h3>Stocks</h3>
+                <a href="/create_stock">New Stock</a>
+            </div>
+            <div class="row">
+                <table>
+                    <thead>
+                        <th>Ticker</th>
+                        <th>Price</th>
+                        <th>Change</th>
+                        <th>Value</th>
+                        <th>Shares</th>
+                    </thead>
+                    <tbody>
+                        {% if portfolio.owned_stocks|length == 0 %}
+                        <tr>
+                            <td colspan="5"><p>No results found</p></td>
+                        </tr>
+                        {% else %}
+                            {% for o_stock in portfolio.owned_stocks %}
+                                <tr>
+                                    <td><a href="/stock/{{o_stock.ticker}}">{{o_stock.ticker}}</a></td>
+                                    <td>{{o_stock.price}}</td>
+                                    <td>{{o_stock.change}}</td>
+                                    <td>{{o_stock.value}}</td>
+                                    <td>{{o_stock.shares}}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
